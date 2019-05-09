@@ -43,6 +43,32 @@ module.exports = function (app) {
         
  });
 
+ app.post('/api/firebase/delete',function(req,res){
+   
+  console.log('Firebase');
+  var tempData = '';
+ firestore.collection('messages').where('message', '==', req.body.text).get().then((data) => {
+   
+   data.forEach((doc) => {
+   //  console.log(doc.data());
+   const id = doc.id;
+   console.log(doc.id);
+    console.log(doc.data);  
+    firestore.collection('messages').doc(id).delete();
+   //tempData += doc.data().message + '\n'
+
+   })
+
+  res.send(tempData);
+   //console.log(tempData);
+ })
+
+      
+});
+ 
+ 
+ 
+ 
  app.post('/api/firebase/messages',function(req,res){
    
   console.log('Firebase');
