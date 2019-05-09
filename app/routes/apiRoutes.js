@@ -10,7 +10,7 @@ const firestore = new Firestore({
   keyFilename: __dirname+'/../../Key/privateKey.json'
 });
 
-module.exports = function (app, db) {
+module.exports = function (app) {
   
 
     app.get('/', (req, res) => {
@@ -32,4 +32,3 @@ module.exports = function (app, db) {
   
 }
 
-module.exports.getReminders = getReminders; // export your functuion

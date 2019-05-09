@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
     next();
   });
 
-apiRoutes(app, db);
+apiRoutes(app);
 
 app.listen(PORT, function () {
   console.log('starting'); 
