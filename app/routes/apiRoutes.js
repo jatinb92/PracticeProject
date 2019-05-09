@@ -1,5 +1,16 @@
 
 const Firestore = require('@google-cloud/firestore');
+/*
+const admin = require('firebase-admin');
+
+var serviceAccount = require('../../Key/privateKey.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+var db = admin.firestore();
+*/
 
 
 const projectId = 'dummyaitslsams';
@@ -31,6 +42,25 @@ module.exports = function (app) {
         
         
  });
+
+ app.post('/api/firebase/messages',function(req,res){
+   
+  console.log('Firebase');
+  var tempData = '';
+ firestore.collection('messages').get().then((data) => {
+   
+   data.forEach((doc) => {
+   //  console.log(doc.data());
+     tempData += doc.data().message + '\n'
+
+   })
+
+  res.send(tempData);
+   //console.log(tempData);
+ })
+
+      
+});
   
 }
 
