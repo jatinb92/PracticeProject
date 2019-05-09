@@ -27,7 +27,8 @@ module.exports = function (app) {
     console.log(req.body.text);
     firestore.collection('messages').doc().set( {message: req.body.text}  );
 
-        res.text(`Added TODO For ${req.body.text}`);
+        res.send(`Added TODO For ${req.body.text}`)
+        
         
  });
   
